@@ -1,7 +1,7 @@
 package com.platzi.market.persistence.mapper;
 
-import com.platzi.market.domain.Category;
-import com.platzi.market.persistence.entity.Categoria;
+import com.platzi.market.domain.CategoryDTO;
+import com.platzi.market.persistence.entity.Category;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -14,9 +14,9 @@ public interface CategoryMapper {
             @Mapping(source = "descripcion", target = "category"),
             @Mapping(source = "estado", target = "active"),
     })
-    Category toCategory(Categoria categoria);
+    CategoryDTO toCategory(Category categoria);
 
     @InheritInverseConfiguration
     @Mapping(target = "productos", ignore = true)
-    Categoria toCategoria(Category category);
+    Category toCategoria(CategoryDTO category);
 }

@@ -1,6 +1,6 @@
 package com.platzi.market.domain;
 
-public class PurchaseItem {
+public class PurchaseItemDTO {
     private int productId;
     private int quantity;
     private double total;

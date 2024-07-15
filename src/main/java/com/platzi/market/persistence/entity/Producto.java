@@ -29,7 +29,7 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-    private Categoria categoria;
+    private Category categoria;
 
     public Integer getIdProducto() {
         return idProducto;
@@ -87,11 +87,11 @@ public class Producto {
         this.estado = estado;
     }
 
-    public Categoria getCategoria() {
+    public Category getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(Category categoria) {
         this.categoria = categoria;
     }
 }

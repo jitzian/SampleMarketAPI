@@ -1,15 +1,15 @@
 package com.platzi.market.domain.repository;
 
-import com.platzi.market.domain.Product;
+import com.platzi.market.domain.ProductDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository {
-    List<Product> getAll();
-    Optional<List<Product>> getByCategory(int categoryId);
-    Optional<List<Product>> getScarseProducts(int quantity);
-    Optional<Product> getProduct(int productId);
-    Product save(Product product);
+    List<ProductDTO> getAll();
+    Optional<List<ProductDTO>> getByCategory(int categoryId);
+    Optional<List<ProductDTO>> getScarseProducts(int quantity);
+    Optional<ProductDTO> getProduct(int productId);
+    ProductDTO save(ProductDTO product);
     void delete(int productId);
 }

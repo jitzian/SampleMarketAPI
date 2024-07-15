@@ -4,9 +4,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "compras_productos")
-public class ComprasProducto {
+public class PurchaseProduct {
     @EmbeddedId
-    private ComprasProductoPK id;
+    private PurchaseProductPK id;
 
     private Integer cantidad;
     private Double total;
@@ -15,17 +15,17 @@ public class ComprasProducto {
     @ManyToOne
     @MapsId("idCompra")
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
-    private Compra compra;
+    private Purchase compra;
 
     @ManyToOne
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
     private Producto producto;
 
-    public ComprasProductoPK getId() {
+    public PurchaseProductPK getId() {
         return id;
     }
 
-    public void setId(ComprasProductoPK id) {
+    public void setId(PurchaseProductPK id) {
         this.id = id;
     }
 
@@ -53,11 +53,11 @@ public class ComprasProducto {
         this.estado = estado;
     }
 
-    public Compra getCompra() {
+    public Purchase getCompra() {
         return compra;
     }
 
-    public void setCompra(Compra compra) {
+    public void setCompra(Purchase compra) {
         this.compra = compra;
     }
 

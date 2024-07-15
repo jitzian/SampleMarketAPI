@@ -1,6 +1,6 @@
 package com.platzi.market.web.controller;
 
-import com.platzi.market.domain.Product;
+import com.platzi.market.domain.ProductDTO;
 import com.platzi.market.domain.service.ProductService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -23,7 +22,7 @@ public class ProductController {
     @GetMapping("/all")
     @ApiOperation("Get all supermarket products")
     @ApiResponse(code = 200, message = "OK")
-    public ResponseEntity<List<Product>> getAll() {
+    public ResponseEntity<List<ProductDTO>> getAll() {
         return new ResponseEntity<>(productService.getAll(), HttpStatus.OK);
     }
 
@@ -33,7 +32,7 @@ public class ProductController {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 404, message = "Product not found")
     })
-    public ResponseEntity<Product> getProduct(
+    public ResponseEntity<ProductDTO> getProduct(
             @ApiParam(value = "The id of the product", required = true, example = "7")
             @PathVariable("id") int productId
     ) {
@@ -45,7 +44,7 @@ public class ProductController {
     @GetMapping("/category/{categoryId}")
     @ApiOperation("Get all products from a category")
     @ApiResponse(code = 200, message = "OK")
-    public ResponseEntity<List<Product>> getByCategory(@PathVariable("categoryId") int categoryId) {
+    public ResponseEntity<List<ProductDTO>> getByCategory(@PathVariable("categoryId") int categoryId) {
         return productService.getByCategory(categoryId)
                 .map(products -> new ResponseEntity<>(products, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -54,7 +53,7 @@ public class ProductController {
     @PostMapping("/save")
     @ApiOperation("Create a new product")
     @ApiResponse(code = 201, message = "CREATED")
-    public ResponseEntity<Product> save(@RequestBody Product product) {
+    public ResponseEntity<ProductDTO> save(@RequestBody ProductDTO product) {
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
 

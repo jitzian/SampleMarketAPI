@@ -1,13 +1,13 @@
 package com.platzi.market.domain;
 
-public class Product {
+public class ProductDTO {
     private int productId;
     private String name;
     private int categoryId;
     private double price;
     private int stock;
     private boolean active;
-    private Category category;
+    private CategoryDTO category;
 
     public int getProductId() {
         return productId;
@@ -57,11 +57,11 @@ public class Product {
         this.active = active;
     }
 
-    public Category getCategory() {
+    public CategoryDTO getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(CategoryDTO category) {
         this.category = category;
     }
 }
